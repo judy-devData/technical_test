@@ -38,15 +38,9 @@ Then to run the data pipeline, make sure to be in the repo base folder and then 
 
 ```python main.py```
 
-``````
-
-# Ad-hoc processing
-
-``````
+# Ad Hoc Processing
 
 ```python ad_hoc.py```
-
-``````
 
 
 # To go further 
