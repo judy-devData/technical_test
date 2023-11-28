@@ -55,7 +55,13 @@
             "journal": "Psychopharmacology"
         }
     ],
-    "ATROPINE": [],
+    "ATROPINE": [
+        {
+            "title": "Comparison of pressure BETAMETHASONE release, phonophoresis and dry needling in treatment of latent myofascial trigger point of upper trapezius ATROPINE muscle.",
+            "date": "2020-01-03",
+            "journal": "The journal of maternal-fetal & neonatal medicine"
+        }
+    ],
     "EPINEPHRINE": [
         {
             "title": "The High Cost of Epinephrine Autoinjectors and Possible Alternatives.",
@@ -73,8 +79,29 @@
             "journal": "The journal of allergy and clinical immunology. In practice"
         }
     ],
-    "ISOPRENALINE": [],
+    "ISOPRENALINE": [
+        {
+            "title": "Gold nanoparticles synthesized from Euphorbia fischeriana root by green route method alleviates the isoprenaline hydrochloride induced myocardial infarction in rats.",
+            "date": "2020-01-01",
+            "journal": "Journal of photochemistry and photobiology. B, Biology"
+        }
+    ],
     "BETAMETHASONE": [
+        {
+            "title": "Clinical implications of umbilical artery Doppler changes after betamethasone administration",
+            "date": "2020-01-01",
+            "journal": "The journal of maternal-fetal & neonatal medicine"
+        },
+        {
+            "title": "Effects of Topical Application of Betamethasone on Imiquimod-induced Psoriasis-like Skin Inflammation in Mice.",
+            "date": "2020-01-01",
+            "journal": "Journal of back and musculoskeletal rehabilitation"
+        },
+        {
+            "title": "Comparison of pressure BETAMETHASONE release, phonophoresis and dry needling in treatment of latent myofascial trigger point of upper trapezius ATROPINE muscle.",
+            "date": "2020-01-03",
+            "journal": "The journal of maternal-fetal & neonatal medicine"
+        },
         {
             "title": "Preemptive Infiltration With Betamethasone and Ropivacaine for Postoperative Pain in Laminoplasty or xc3xb1 Laminectomy",
             "date": "2020-01-01",
