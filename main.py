@@ -1,6 +1,11 @@
 import json
 import re
 import pandas as pd
+import logging
+
+# Configure the logger
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 def reformat_json(file_path):
@@ -73,7 +78,6 @@ def remove_special_characters(df, columns):
 
 
 # Function to find drug mentions in titles and creates the fields for the desired output
-
 def find_drug_mentions(drug_name, df_pubmed, df_trials, df_pubmed_title, df_trials_title):
     """ removes the special characters from a given column that don't fall into the category of a letter/number
         Parameters:
@@ -117,12 +121,33 @@ def find_drug_mentions(drug_name, df_pubmed, df_trials, df_pubmed_title, df_tria
     return matches
 
 
+def generate_graph(df_drugs, df_pubmed, df_trials):
+    """
+    Searches for drug mentions in titles and creates JSON output for each drug in the drug DataFrame.
+
+    Parameters:
+    df_drugs: DataFrame containing drugs
+    df_pubmed: DataFrame for PubMed titles
+    df_trials: DataFrame for clinical trials titles
+
+    Returns:
+    drug_mentions: Dictionary containing drug mentions with keys as drug names
+                   and values as a list of dictionaries with mentions (title, date, journal)
+    """
+    drug_mentions = {
+        drug: find_drug_mentions(drug, df_pubmed, df_trials, df_pubmed['title'], df_trials['scientific_title'])
+        for drug in df_drugs['drug']
+    }
+
+    return drug_mentions
+
+
 def main():
     df_trials = pd.read_csv('data/clinical_trials.csv')
     df_drugs = pd.read_csv('data/drugs.csv')
 
     # We preprocess the data
-    print("Preprocessing the data...")
+    logger.info("Preprocessing the data...")
 
     # reformat Json
     reformat_json('data/pubmed.json')
@@ -138,17 +163,14 @@ def main():
     df_trials = remove_special_characters(df_trials, ['scientific_title', 'journal'])
 
     # We create the graph
-    print("Creating the graph...")
-    # Search for drug mentions in titles and create JSON output
-    drug_mentions = {
-        drug: find_drug_mentions(drug, df_pubmed, df_trials, df_pubmed['title'], df_trials['scientific_title'])
-        for drug in df_drugs['drug']
-    }
+    logger.info("Creating the graph...")
+
+    drug_mentions = generate_graph(df_drugs, df_pubmed, df_trials)
 
     # # Save extracted information to a JSON file
     with open('data/graph.json', 'w') as json_file:
         json.dump(drug_mentions, json_file, indent=4, default=str)
-    print("Pipeline execution finished.")
+    logger.info("Pipeline execution finished.")
 
 
 if __name__ == "__main__":
